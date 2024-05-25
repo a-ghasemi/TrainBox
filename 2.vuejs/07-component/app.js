@@ -15,12 +15,29 @@ const app = Vue.createApp({
                     email: "julie@localhost.com"
                 },
             ],
-            showDetails: []
+        };
+    }
+});
+
+app.component('friend-contact',{
+    template: `
+        <li>
+            <h2>{{ obj.name }}</h2>
+            <button @click.prevent="toggle">{{ showDetails ? "Hide":"Show" }} Details</button>
+            <ul v-show="showDetails">
+                <li><strong>Phone:</strong> {{ obj.phone }}</li>
+                <li><strong>Email:</strong> {{ obj.email }}</li>
+            </ul>
+        </li>
+    `,
+    data(){
+        return {
+            showDetails: false
         };
     },
     methods: {
-        toggle(id){
-            this.showDetails[id] = (!this.showDetails[id])? true : !this.showDetails[id];
+        toggle(){
+            this.showDetails = !this.showDetails;
         }
     }
 });
