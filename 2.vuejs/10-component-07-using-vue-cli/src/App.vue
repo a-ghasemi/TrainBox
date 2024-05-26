@@ -3,11 +3,15 @@
     <h1>Friends List</h1>
   </header>
   <ul>
+    <friend-contact v-for="friend in friends" :key="friend.id" :member="friend"></friend-contact>
   </ul>
 </template>
 
 <script>
+import FriendContact from "@/components/FriendContact.vue";
+
 export default {
+  components: {FriendContact},
   data() {
     return {
       friends: [
